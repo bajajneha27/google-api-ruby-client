@@ -101,8 +101,9 @@ module Google
         def execute(client)
           prepare!
           opencensus_begin_span
+          tries = options.is_idempotent ? options.retries : 0
           begin
-            Retriable.retriable tries: options.retries + 1,
+            Retriable.retriable tries: tries + 1,
                                 max_elapsed_time: options.max_elapsed_time,
                                 base_interval: options.base_interval,
                                 max_interval: options.max_interval,

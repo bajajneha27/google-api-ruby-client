@@ -32,6 +32,7 @@ module Google
       :base_interval,
       :max_interval,
       :multiplier,
+      :is_idempotent,
       :header,
       :normalize_unicode,
       :skip_serialization,
@@ -79,6 +80,8 @@ module Google
       # @!attribute [rw] multiplier
       #   @return [rw] Each successive interval grows by this factor. A multipler of 1.5 means the next interval 
       #              will be 1.5x the current interval.
+      # @!attribute [rw] is_idempotent
+      #   @return [rw] Indicator of the operation being executed is idempotent or not.
       # @!attribute [rw] header
       #   @return [Hash<String,String>] Additional HTTP headers to include in requests.
       # @!attribute [rw] normalize_unicode
@@ -123,6 +126,7 @@ module Google
     RequestOptions.default.base_interval = 1
     RequestOptions.default.max_interval = 60
     RequestOptions.default.multiplier = 2
+    RequestOptions.default.is_idempotent = true
     RequestOptions.default.normalize_unicode = false
     RequestOptions.default.skip_serialization = false
     RequestOptions.default.skip_deserialization = false

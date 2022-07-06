@@ -45,6 +45,7 @@ RSpec.describe Google::Apis::RequestOptions do
     expect(defaults.base_interval).to eq(1)
     expect(defaults.max_interval).to eq(60)
     expect(defaults.multiplier).to eq(2)
+    expect(defaults.is_idempotent).to be true
     expect(defaults.normalize_unicode).to be false
     expect(defaults.skip_serialization).to be false
     expect(defaults.skip_deserialization).to be false

@@ -183,6 +183,11 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       expect { command.execute(client) }.to raise_error(Google::Apis::ServerError)
     end
 
+    it 'should not retry if the operation is non-idempotent' do
+      command.options.is_idempotent = false
+      expect { command.execute(client) }.to raise_error(Google::Apis::ServerError)
+    end
+
 
     context('with retries exceeded') do
       before(:example) do
